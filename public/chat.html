@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+    <div class="container py-4">
+        <div class="row" style="align-items: center;">
+            <div class="col-xs-4 px-0">
+                <div class="card bg-dark" style="width:400px;">
+                    <img src="https://freesvg.org/img/ericlemerdy_Callout_chat.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title" style="color:white;">Let's Chat!</h5>
+                      <p class="card-text" style="color:white;">A light-weight chat-app built on express and socket.io</p>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- Chat Box-->
+          <div class="col-xs-5 px-0">
+            <div class="px-4 py-5  bg-white" id='messageBody' style="overflow-y: scroll !important; height:420px; width: 400px !important;">
+              <!-- Sender Message-->
+              <div id="message"></div>
+            </div>
+            <!-- Typing area -->
+            <form action="submit">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xs-12">
+                <input type="text" id="msg" placeholder="Type a message" class="ig-2" autocomplete="off">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-6">
+                    <button type="submit" id="btn" class="btn btn-primary" style="border-radius: 25px; margin: 10px;">Send</button>
+                      </div>
+                      <div class="col-xs-6">
+                    <button  id="get-location" class="btn btn-success"style="border-radius: 25px;margin: 10px;">Location</button>
+                      </div>
+                  </div>
+              </div>
+            </form>
+        </div>
+        <div class="col-xs-3">
+            <div class="card bg-light" style="width:200px;height: 540px; margin-top: 0px;overflow-y: scroll;">
+                <div id="userlist"></div>
+            </div>
+    </div>
+
+
+        </div>
+      </div>
+
+
+<script id="others-message-template" type="type/html">
+    <div class="media w-50 mb-3">
+        <div class="media-body ml-3">
+          <div class=" rounded py-2 px-3 mb-2" style="background:#d6d6c2;padding:20px">
+            <p>
+                <span class="message__name"><strong>{{username}}</strong></span>
+            </p>
+            <p>{{message}}</p>
+          </div>
+          <p class="small text-muted">{{createdAt}}</p>
+        </div>
+      </div>
+</script>
+<script id="my-message-template" type="type/html">
+
+    <div class="media w-50 ml-auto mb-3">
+        <div class="media-body">
+          <div class=" rounded py-2 px-3 mb-2" style="background: #99ceff">
+            <p>
+                <span class="message__name"><strong>{{username}}</strong></span>
+            </p>
+            <p>{{message}}</p>
+          </div>
+          <p class="small text-muted">{{createdAt}}</p>
+        </div>
+      </div>
+
+</script>
+<script id="others-location-template" type="type/html">
+    <div class="media w-50 mb-3">
+        <div class="media-body ml-3">
+          <div class=" rounded py-2 px-3 mb-2"  style="background:#d6d6c2;padding:20px">
+            <p>
+                <span class="message__name"><strong>{{username}}</strong></span>
+            </p>
+            <p><a href="{{location}}">My location</a></p>
+          </div>
+          <p class="small text-muted">{{createdAt}}</p>
+        </div>
+      </div>
+</script>
+<script id="my-location-template" type="type/html">
+    <div class="media w-50 ml-auto mb-3">
+        <div class="media-body">
+          <div class=" rounded py-2 px-3 mb-2" style="background: #99ceff">
+            <p>
+                <span class="message__name"><strong>{{username}}</strong></span>
+            </p>
+            <p><a href="{{location}}">My location</a></p>
+          </div>
+          <p class="small text-muted">{{createdAt}}</p>
+        </div>
+      </div>
+</script>
+<script id="list-template" type="type/html">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-dark"><strong>Room : {{room}}</strong></li>
+        <li class="list-group-item list-group-item-dark"><strong>Members:</strong></li>
+
+        {{#users}}
+        <li class="list-group-item list-group-item-success">{{username}}</li>
+        {{/users}}
+    </ul>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!-- <div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-bordered">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong>Chat</strong></h4> <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a>
+                    </div>
+                    <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                        
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <div class="publisher bt-1 border-light"><form>
+                        <div class="form-group">
+                            <input type="text" id="msg" class="form-control" placeholder="Message">
+                        </div>
+                        <button type="submit" id="btn" class="btn btn-primary">Send</button>
+                    </form></div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="container">
+                        
+                        <br>
+    
+                    </div>
+ 
+</body>
+ -->
+
+
+<!-- <body>
+    <div class="row">
+        <div class="col-sm-6">
+            
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+
+ -->
+
+    <!-- using socket.io in the server gives access to a client side version of it
+    This allows some of the functions of the socket library to be used in the client side js -->

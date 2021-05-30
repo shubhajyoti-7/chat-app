@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+  <div class="container py-5 px-5">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card bg-dark" style="width:400px;">
+            <img src="https://freesvg.org/img/ericlemerdy_Callout_chat.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title" style="color:white;">Let's Chat!</h5>
+              <p class="card-text" style="color:white;">A light-weight chat-app built on express and socket.io</p>
+            </div>
+          </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="card bg-light" style="width: 400px;">
+        <form action="/chat.html" method="GET">
+          <div class="jumbotron">
+            <h1 class="display-4">Let's Chat!</h1>
+            <p class="lead">Create Private Room</p>
+          </div>
+          <div class="container">
+            <h6 class="display-5">User Name</h6>
+          <input type="text" id="username" name="username" placeholder="Enter username" required>
+          <br>
+          <h6 class="display-5">Room Name</h6>
+          <input type="text" id="roomname" name="roomname" placeholder="Enter roomname"  required>
+          <hr>
+          <button class="btn btn-primary" style="border-radius: 25px; padding-bottom: 9px;padding-top: 9px;">Create Room</button>
+          <br>
+          <br>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+        </div>

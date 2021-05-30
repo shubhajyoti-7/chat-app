@@ -1,0 +1,40 @@
+#username,#roomname{
+    border-radius: 25px;
+    border: 2px solid #609;
+    padding: 20px; 
+    width: 350px;
+    height: 15px;    
+}
+
+#msg{
+    border-radius: 25px;
+    border: 2px solid #609;
+    padding: 20px; 
+    width: 350px;
+    height: 15px;
+    margin: 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
